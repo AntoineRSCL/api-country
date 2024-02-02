@@ -42,3 +42,15 @@ code {
 .flagGrid img{
   width: 5%;
 }
+
+.containerSVG{
+  width: 100%;
+  background-color: blue;
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .mapSVG {
+    width: 50%;
+  }
+}
