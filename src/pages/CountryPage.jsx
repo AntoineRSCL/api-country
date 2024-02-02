@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Pagination from "../components/Pagination";
 import countryAPI from "../services/countryAPI";
 import World from "@svg-maps/world";
-import { SVGMap, CheckboxSVGMap    } from "react-svg-map";
-import "react-svg-map/lib/index.css";
+import { SVGMap } from "react-svg-map";
+//import "react-svg-map/lib/index.css";
 
 const CountryPage = () => {
     const [countries, setCountries] = useState([]);
@@ -55,21 +55,16 @@ const CountryPage = () => {
             <div>
                 <h1>Liste des pays</h1>
                 <div className="containerSVG">
-                    <SVGMap  onLocationMouseOver={(e)=>{
-                        if(compteur === 0){
-                            let name = e.target.ariaLabel
-                            setSearch(name)
-                            
+                    <SVGMap onLocationClick={(e)=>{
+                        if(compteur === 1){
+                            setCompteur(0)
                         }
-                        console.log(compteur)
-                    }} onLocationClick={(e)=>{
-                        
                         let name = e.target.ariaLabel
                         setSearch(name)
                         setCompteur(1)
-                    }} className="mapSVG" map={World} />
+                    }} className="svg-map" map={World} />
                 </div>
-                <div>
+                <div className="inputDiv">
                     <input
                         type="text"
                         placeholder="Votre recherche..."
@@ -77,28 +72,30 @@ const CountryPage = () => {
                         value={search}
                     />
                 </div>
-                <div className="contGrid">
-                    {paginatedCountries.map((country) => (
-                        <div
-                            key={country.name.common}
-                            className="gridCountry"
-                        >
-                            <div className="flagGrid">
-                                <img src={country.flags.svg} alt="" />
+                <div className="contenair">
+                    <div className="contGrid">
+                        {paginatedCountries.map((country) => (
+                            <div
+                                key={country.name.common}
+                                className="gridCountry"
+                            >   
+                                <div className="contenairDrapeau">
+                                    <div className="flagGrid" style={{ backgroundImage: `url(${country.flags.svg})` }}></div> 
+                                </div>
+                                <div className="infoCountry">{country.name.common}</div>
                             </div>
-                            <strong>{country.name.common}</strong> - {country.capital}
-                        </div>
-                    ))}
-                    {itemsPerPage < filteredCountries.length && (
-                        <Pagination
-                            currentPage={currentPage}
-                            itemsPerPage={itemsPerPage}
-                            length={countries.length}
-                            onPageChanged={handlePageChange}
-                        />
-                    )}
+                        ))}
+                    </div>
                 </div>
             </div>
+            {itemsPerPage < filteredCountries.length && (
+                <Pagination
+                    currentPage={currentPage}
+                    itemsPerPage={itemsPerPage}
+                    length={countries.length}
+                    onPageChanged={handlePageChange}
+                />
+            )}
         </>
     );
 };

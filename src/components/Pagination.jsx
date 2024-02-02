@@ -10,7 +10,7 @@ const Pagination = (props) => {
 
     return ( 
         <div>
-            <ul className="pagination pagination-sm justify-content-center">
+            <ul className="pagination">
                 <li className={"page-item" + (props.currentPage === 1 ? " disabled" : null)}>
                     <button className="page-link" onClick={() => props.onPageChanged(props.currentPage - 1)} >&laquo;</button>
                 </li>

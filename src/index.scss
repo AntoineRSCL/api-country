@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  background-color: #111820;
 }
 
 code {
@@ -12,45 +14,155 @@ code {
     monospace;
 }
 
-.contGrid{
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.contenair{
   width: 100%;
-  height: 85vh;
-  background-color: red;
+  height: 33vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contGrid{
+  width: 80%;
+  margin: auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   column-gap: 50px;
   row-gap: 5px;
+  place-items: center;
 }
 
 .gridCountry{
-  height: 100px;
+  margin-top: 20px;
+  height: 120px;
+  width: 150px;
   border-radius: 20px;
-  border: 1px solid black;
+  border: 1px solid white;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.flagGrid{
+.contenairDrapeau{
   width: 100%;
-  height: 100%;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   object-fit: contain;
+  .flagGrid{
+    width: 75px;
+    height: 50px;
+    background-color: black;
+    border-radius: 20px;
+    background-position: center center;
+    background-size: cover;
+  }
 }
 
-.flagGrid img{
-  width: 5%;
+.infoCountry{
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex: 1;
 }
 
 .containerSVG{
   width: 100%;
-  background-color: blue;
-  height: 65vh;
+  background-color: #111820;
+  height: 55vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  .mapSVG {
-    width: 50%;
+  .svg-map {
+    width: 40%;
+    height: auto;
+    stroke: #666;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
   }
+
+  .svg-map__location {
+    fill: white;
+    cursor: pointer; }
+    .svg-map__location:focus {
+      fill: #15232f;
+      outline: 0; }
+      .svg-map__location:hover{
+      fill: #1fa9e7; }
+}
+
+.inputDiv{
+  width: 100%;
+  height: 3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input{
+    width: 250px;
+    height: 2vh;
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    &:focus{
+      outline: none;
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  width: 80%;
+  margin: auto;
+  gap: 20px;
+
+  ul {
+    display: flex;
+    list-style: none;
+  }
+
+  li {
+    margin: 0 0.5rem;
+    list-style: none;
+
+    button {
+      width: 30px;
+      height: 30px;
+      color: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #111820;
+      cursor: pointer;
+
+      font-weight: bold;
+
+      &:hover {
+        background: #1fa9e7;
+      }
+    }
+  }
+}
+
+li.active button  {
+  background-color: white !important;
+  color: black;
+}
+li.invisible{
+    display: none !important;
 }
