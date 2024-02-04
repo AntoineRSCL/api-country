@@ -2,19 +2,31 @@ import React, { useState, useEffect } from "react";
 import Pagination from "../components/Pagination";
 import countryAPI from "../services/countryAPI";
 import World from "@svg-maps/world";
-import { SVGMap } from "react-svg-map";
+import { SVGMap, CheckboxSVGMap  } from "react-svg-map";
+import { Link } from "react-router-dom";
 //import "react-svg-map/lib/index.css";
 
 const CountryPage = () => {
     const [countries, setCountries] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState("");
-    const [compteur, setCompteur] = useState(0)
-    //const [hoveredCountry, setHoveredCountry] = useState("");
+    const [compteur, setCompteur] = useState(0);
+    const [selectedCountry, setSelectedCountry] = useState([]);
 
     const fetchCountry = async () => {
         try {
             const data = await countryAPI.getAllCountries();
+            data.sort(function(a,b) {
+                var nameA = a.name.common
+                var nameB = b.name.common
+                if(nameA < nameB){
+                    return -1;
+                }
+                if(nameA > nameB){
+                    return 1;
+                }
+                return 0;
+            })
             setCountries(data);
             //console.log(data)
         } catch (error) {
@@ -23,7 +35,9 @@ const CountryPage = () => {
     };
 
     const handlePageChange = (page) => {
-        setCurrentPage(page);
+        // Assurez-vous que la page reste dans les limites correctes
+        const newPage = Math.max(1, Math.min(page, 21));
+        setCurrentPage(newPage);
     };
 
     const filteredCountries = countries.filter(c =>
@@ -31,6 +45,7 @@ const CountryPage = () => {
         c.name.official.toLowerCase().includes(search.toLowerCase())
     );
 
+    
     const itemsPerPage = 12;
 
     const paginatedCountries = Pagination.getData(
@@ -42,7 +57,8 @@ const CountryPage = () => {
     const handleSearch = (event) => {
         const value = event.currentTarget.value;
         setSearch(value);
-        setCurrentPage(1);
+        setCurrentPage(1);  // Réinitialiser la page à 1 lorsqu'une recherche est effectuée
+        console.log(filteredCountries)
     };
 
 
@@ -55,13 +71,13 @@ const CountryPage = () => {
             <div>
                 <h1>Liste des pays</h1>
                 <div className="containerSVG">
-                    <SVGMap onLocationClick={(e)=>{
-                        if(compteur === 1){
+                    <CheckboxSVGMap onLocationFocus={(e)=>{
+                        /*if(compteur === 1){
                             setCompteur(0)
-                        }
+                        }*/
                         let name = e.target.ariaLabel
                         setSearch(name)
-                        setCompteur(1)
+                        //setCompteur(1)
                     }} className="svg-map" map={World} />
                 </div>
                 <div className="inputDiv">
@@ -75,15 +91,17 @@ const CountryPage = () => {
                 <div className="contenair">
                     <div className="contGrid">
                         {paginatedCountries.map((country) => (
-                            <div
-                                key={country.name.common}
-                                className="gridCountry"
-                            >   
-                                <div className="contenairDrapeau">
-                                    <div className="flagGrid" style={{ backgroundImage: `url(${country.flags.svg})` }}></div> 
+                            <Link key={country.name.common} to={`/country/${country.name.common}`}>
+                                <div
+                                    key={country.name.common}
+                                    className="gridCountry"
+                                >   
+                                    <div className="contenairDrapeau">
+                                        <div className="flagGrid" style={{ backgroundImage: `url(${country.flags.svg})` }}></div> 
+                                    </div>
+                                    <div className="infoCountry">{country.name.common}</div>
                                 </div>
-                                <div className="infoCountry">{country.name.common}</div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -92,7 +110,7 @@ const CountryPage = () => {
                 <Pagination
                     currentPage={currentPage}
                     itemsPerPage={itemsPerPage}
-                    length={countries.length}
+                    length={filteredCountries.length}
                     onPageChanged={handlePageChange}
                 />
             )}
