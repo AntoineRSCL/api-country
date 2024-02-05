@@ -27,6 +27,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .contGrid{
@@ -38,6 +39,18 @@ code {
   row-gap: 5px;
   place-items: center;
   text-decoration: none;
+  @media (max-width: 1350px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 910px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 670px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 420px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
   a{
     text-decoration: none;
@@ -90,10 +103,11 @@ code {
 .containerSVG{
   width: 100%;
   background-color: #111820;
-  height: 55vh;
+  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  
   .svg-map {
     width: 40%;
     height: auto;
@@ -101,6 +115,18 @@ code {
     stroke-width: 1;
     stroke-linecap: round;
     stroke-linejoin: round;
+    @media (max-width: 1400px) {
+      width: 35%;
+    }
+    @media (max-width: 910px) {
+      width: 40%;
+    }
+    @media (max-width: 670px) {
+      width: 45%;
+    }
+    @media (max-width: 420px) {
+      width: 50%;
+    }
 
   }
 
@@ -143,6 +169,10 @@ code {
   margin: auto;
   gap: 5px;
   margin-top: 10px !important;
+  @media (max-width: 769px) {
+    gap: 0.1px;
+    flex-wrap: wrap;
+  }
   
   ul {
     display: flex;
@@ -153,6 +183,9 @@ code {
     margin-top: 10px;
     margin: 0 0.5rem;
     list-style: none;
+    @media (max-width: 769px) {
+      margin: 0 0.1rem;
+    }
     
     button {
       text-decoration: none;
@@ -181,3 +214,70 @@ li.active button  {
 li.invisible{
     display: none !important;
 }
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #1fa9e7;
+  color: white;
+
+  &-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  &-toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+
+  &-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+
+    li {
+      margin: 0 1rem;
+
+      a {
+        text-decoration: none;
+        color: white;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      background-color: #1fa9e7;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      display: none; // initialement caché
+      transition: all 0.3s ease-in-out;
+
+      li {
+        margin: 1rem 0;
+      }
+    }
+  }
+
+  &.open {
+    .navbar-links {
+      display: flex; // afficher la barre de navigation lorsqu'elle est ouverte
+    }
+  }
+}
+
