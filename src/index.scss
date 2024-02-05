@@ -37,6 +37,11 @@ code {
   column-gap: 50px;
   row-gap: 5px;
   place-items: center;
+  text-decoration: none;
+
+  a{
+    text-decoration: none;
+  }
 }
 
 .gridCountry{
@@ -50,6 +55,7 @@ code {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .contenairDrapeau{
@@ -78,6 +84,7 @@ code {
   text-align: center;
   align-items: center;
   flex: 1;
+  text-decoration: none;
 }
 
 .containerSVG{
@@ -146,8 +153,9 @@ code {
     margin-top: 10px;
     margin: 0 0.5rem;
     list-style: none;
-
+    
     button {
+      text-decoration: none;
       width: 30px;
       height: 30px;
       color: white;
@@ -168,6 +176,7 @@ code {
 li.active button  {
   background-color: white !important;
   color: black;
+  text-decoration: none;
 }
 li.invisible{
     display: none !important;

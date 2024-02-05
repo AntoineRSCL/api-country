@@ -58,7 +58,7 @@ const CountryPage = () => {
         const value = event.currentTarget.value;
         setSearch(value);
         setCurrentPage(1);  // Réinitialiser la page à 1 lorsqu'une recherche est effectuée
-        console.log(filteredCountries)
+        //console.log(filteredCountries)
     };
 
 
