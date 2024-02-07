@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Pagination from "../components/Pagination";
 import countryAPI from "../services/countryAPI";
 import World from "@svg-maps/world";
-import { SVGMap, CheckboxSVGMap  } from "react-svg-map";
+import { SVGMap } from "react-svg-map";
 import { Link } from "react-router-dom";
 //import "react-svg-map/lib/index.css";
 
@@ -71,7 +71,7 @@ const CountryPage = () => {
             <div>
                 <h1>Liste des pays</h1>
                 <div className="containerSVG">
-                    <CheckboxSVGMap onLocationFocus={(e)=>{
+                    <SVGMap onLocationClick={(e)=>{
                         /*if(compteur === 1){
                             setCompteur(0)
                         }*/

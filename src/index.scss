@@ -69,6 +69,14 @@ code {
   justify-content: center;
   cursor: pointer;
   text-decoration: none;
+
+  &:hover{
+    background-color: #1fa9e7;
+    .infoCountry{
+      color: #15232f;
+
+    }
+  }
 }
 
 .contenairDrapeau{
@@ -220,7 +228,7 @@ li.invisible{
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background-color: #1fa9e7;
+  background-color: #666;
   color: white;
 
   &-brand {
@@ -259,7 +267,7 @@ li.invisible{
 
     @media (max-width: 768px) {
       flex-direction: column;
-      background-color: #1fa9e7;
+      background-color: #666;
       position: absolute;
       top: 60px;
       left: 0;
@@ -281,3 +289,39 @@ li.invisible{
   }
 }
 
+.flagInfoCountry{
+  width: 100%;
+  min-height: 30vh;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 50px;
+  gap: 50px;
+
+  .flagCountry{
+    height: 30vh;
+    width: 500px;
+    background-position: center center;
+    background-size: cover;
+    @media (max-width: 1349px) {
+      order: 2;
+    }
+  }
+
+  .infosCountry {
+    height: 25vh;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    span{
+      color: #666;
+    }
+    @media (max-width: 1349px) {
+      order: 1;
+    }
+  }
+}
