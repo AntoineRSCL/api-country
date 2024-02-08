@@ -312,6 +312,7 @@ li.invisible{
   .infosCountry {
     height: 25vh;
     width: 800px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -324,4 +325,77 @@ li.invisible{
       order: 1;
     }
   }
+}
+
+.countryContenu{
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  min-height: 275px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  .infoCC{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 20px;
+    height: 275px;
+    width: 275px;
+    padding: 10px;
+    svg{
+      fill: white;
+      flex: 1;
+    }
+    span{
+      flex: 1;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &.label{
+        color: #666;
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+.coatOfArms{
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  span{
+    font-size: 24px;
+  }
+  img{
+    width: 300px;
+  }
+}
+
+.main{
+  width: 100%;
+  min-height: 90vh;
+}
+
+.footer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3vh;
+  background-color: #666;
+  color: white;
+  margin-top: 20px;
 }
