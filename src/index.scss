@@ -71,7 +71,7 @@ code {
   text-decoration: none;
 
   &:hover{
-    background-color: #1fa9e7;
+    background-color: #666;
     .infoCountry{
       color: #15232f;
 
@@ -79,20 +79,84 @@ code {
   }
 }
 
-.homeCountries{
+.presentation{
   width: 80%;
-  margin: auto;
-  margin-top: 50px;
+  margin: 20px auto;
   display: flex;
+  flex-direction: column;
+  gap: 15px;
+  p{
+    font-size: 20px;
+  }
+  
+}
+
+.homeCountries{
+  width: 90%;
+  min-height: 600px;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 20px;
 
   .homeCountry{
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 450px;
     border: 1px solid white;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    &:hover{
+      transform: scale(1.05);
+    }
+    .flagHC{
+      width: 300px;
+      height: 200px;
+      background-position: center center;
+      background-size: cover;
+    }
+
+    h2{
+      font-size: 28px;
+    }
+    h4{
+      font-size: 16px;
+      font-style: italic;
+      color: #666;
+    }
+    .btnHC{
+      width: 90%;
+      height: 50px;
+      margin: 0px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      a{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        text-decoration: underline;
+        border-radius: 20px;
+        background-color: white;
+        color: #666;
+        font-size: 14px;
+        padding: 10px;
+        &.btnCountry{
+          background-color: #666;
+          color: white;
+
+        }
+      }
+    }
   }
 }
 
@@ -228,7 +292,7 @@ code {
       font-weight: bold;
 
       &:hover {
-        background: #1fa9e7;
+        background: #666;
       }
     }
   }
@@ -274,13 +338,28 @@ li.invisible{
     margin: 0;
 
     li {
-      margin: 0 1rem;
-
+      margin: 0 2rem;
+      
       a {
+        display: flex;
         text-decoration: none;
         color: white;
+        flex-direction: row;
+        height: 30px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        svg{
+          width: 15px;
+          height: 15px;
+          fill: white;
+        }
         &:hover {
-          text-decoration: underline;
+          color: black;
+          svg{
+            fill:black;
+          }
+
         }
       }
     }
@@ -406,7 +485,7 @@ li.invisible{
 
 .main{
   width: 100%;
-  min-height: 90vh;
+  min-height: 87.2vh;
 }
 
 .footer{

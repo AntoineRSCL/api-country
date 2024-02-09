@@ -22,15 +22,27 @@ const HomePage = (props) => {
     return ( 
         <>
             <div>
-                <h1 className="h1Annonce">Welcome on APICountry</h1>
-                <h4>3 randoms countries : </h4>
+                <div className="presentation">
+                    <h1>Welcome on APICountry</h1>
+                    <p>Explore the world with us! Discover fascinating insights and in-depth information about countries around the globe on our platform dedicated to sharing insights about nations.</p>
+                    <h2>3 randoms countries : </h2>
+                </div>
                 <div className="homeCountries">
                     {countries.map((country) => (
-                        <Link key={country.name.common} to={`/country/${country.name.common}`}>
-                            <div className="homeCountry">
-
+                        <div className="homeCountry" 
+                        key={country.name.common}>
+                            <div className="flagHC" style={{ backgroundImage: `url(${country.flags.svg})` }}></div>
+                            <h2>{country.name.common}</h2>
+                            <h4>{country.capital}</h4>
+                            <div className="btnHC">
+                                <Link to={'/country'} className="btnCountry">
+                                    <div >See All Countries</div>  
+                                </Link>
+                                <Link to={`/country/${country.name.common}`} className="btnDetailCountry">
+                                    <div ><span>See {country.name.common} Infos</span></div>
+                                </Link>
                             </div>
-                        </Link>
+                        </div>
                     ))}
                 </div>
             </div>
