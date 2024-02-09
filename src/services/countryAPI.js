@@ -24,7 +24,35 @@ const getCountry = async(country) => {
     }
 }
 
+const getRandomCountry = async () => {
+    try {
+        const response = await axios.get("https://restcountries.com/v3.1/all");
+        const countries = response.data;
+        const randomCountries = [];
+
+        // Générer trois indices aléatoires uniques
+        const indices = [];
+        while (indices.length < 3) {
+            const randomIndex = Math.floor(Math.random() * countries.length);
+            if (!indices.includes(randomIndex)) {
+                indices.push(randomIndex);
+            }
+        }
+
+        // Récupérer les pays correspondant aux indices générés
+        indices.forEach(index => {
+            randomCountries.push(countries[index]);
+        });
+
+        return randomCountries;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+    }
+};
+
 export default {
     getAllCountries: getAllCountries,
-    getCountry: getCountry
+    getCountry: getCountry,
+    getRandomCountry: getRandomCountry
 };

@@ -79,6 +79,28 @@ code {
   }
 }
 
+.homeCountries{
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  .homeCountry{
+    width: 500px;
+    height: 500px;
+    border: 1px solid white;
+    border-radius: 20px;
+  }
+}
+
+.h1Annonce{
+  text-align: center;
+  margin-top: 20px;
+}
+
 .contenairDrapeau{
   width: 100%;
   flex: 1;
@@ -127,13 +149,13 @@ code {
       width: 35%;
     }
     @media (max-width: 910px) {
-      width: 40%;
+      width: 70%;
     }
     @media (max-width: 670px) {
-      width: 45%;
+      width: 80%;
     }
     @media (max-width: 420px) {
-      width: 50%;
+      width: 90%;
     }
 
   }
@@ -142,12 +164,10 @@ code {
     fill: white;
     cursor: pointer; }
     .svg-map__location:focus {
-      fill: #15232f;
+      fill: #666;
       outline: 0; }
       .svg-map__location:hover{
       fill: #1fa9e7; }
-      .svg-map__location[aria-checked=true] {
-      fill: #f4bc44; }
 }
 
 .inputDiv{

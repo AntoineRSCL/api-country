@@ -10,8 +10,6 @@ const CountryPage = () => {
     const [countries, setCountries] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState("");
-    const [compteur, setCompteur] = useState(0);
-    const [selectedCountry, setSelectedCountry] = useState([]);
 
     const fetchCountry = async () => {
         try {
@@ -28,7 +26,6 @@ const CountryPage = () => {
                 return 0;
             })
             setCountries(data);
-            //console.log(data)
         } catch (error) {
             // Gérer les erreurs, si nécessaire
         }
@@ -57,8 +54,7 @@ const CountryPage = () => {
     const handleSearch = (event) => {
         const value = event.currentTarget.value;
         setSearch(value);
-        setCurrentPage(1);  // Réinitialiser la page à 1 lorsqu'une recherche est effectuée
-        //console.log(filteredCountries)
+        setCurrentPage(1);
     };
 
 
@@ -69,15 +65,11 @@ const CountryPage = () => {
     return (
         <>
             <div>
-                <h1>Liste des pays</h1>
+                <h1 className="h1Annonce">List of Countries</h1>
                 <div className="containerSVG">
                     <SVGMap onLocationClick={(e)=>{
-                        /*if(compteur === 1){
-                            setCompteur(0)
-                        }*/
                         let name = e.target.ariaLabel
                         setSearch(name)
-                        //setCompteur(1)
                     }} className="svg-map" map={World} />
                 </div>
                 <div className="inputDiv">
