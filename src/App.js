@@ -5,6 +5,7 @@ import DetailCountryPage from "./pages/DetailCountryPage";
 import Navbar from "./components/Navbar";
 import React, { useState } from 'react';
 import Footer from "./components/Footer";
+import ContactPage from "./pages/ContactPage";
 
 const App = () => {
 
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/" element={<HomePage />}/>
           <Route path="/country" element={<CountryPage />}/>
           <Route path="/country/:countryName" element={<DetailCountryPage />}/>
+          <Route path="/contact" element={<ContactPage />}/>
         </Routes>
       </main>
       <Footer />
