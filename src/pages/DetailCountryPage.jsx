@@ -72,11 +72,11 @@ const DetailCountryPage = () => {
           </div>
         </div>
         {country.coatOfArms && country.coatOfArms.svg && (
-  <div className="coatOfArms">
-    <span>Coat Of Arms</span>
-    <img src={country.coatOfArms.svg} />
-  </div>
-)}
+          <div className="coatOfArms">
+            <span>Coat Of Arms</span>
+            <img src={country.coatOfArms.svg} />
+          </div>
+        )}
 
     </>
   );
