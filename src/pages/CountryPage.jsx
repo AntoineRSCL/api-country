@@ -11,6 +11,7 @@ const CountryPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState("");
 
+    //recupere les donnees et trie par ordre alphabetique
     const fetchCountry = async () => {
         try {
             const data = await countryAPI.getAllCountries();
@@ -27,16 +28,17 @@ const CountryPage = () => {
             })
             setCountries(data);
         } catch (error) {
-            // Gérer les erreurs, si nécessaire
+            console.error(error)
         }
     };
 
     const handlePageChange = (page) => {
-        // Assurez-vous que la page reste dans les limites correctes
+        //Limite que la page reste dans les limites
         const newPage = Math.max(1, Math.min(page, 21));
         setCurrentPage(newPage);
     };
 
+    //On applique des filtres pour la recherche
     const filteredCountries = countries.filter(c =>
         c.name.common.toLowerCase().includes(search.toLowerCase()) ||
         c.name.official.toLowerCase().includes(search.toLowerCase())

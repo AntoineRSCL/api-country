@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const HomePage = (props) => {
     const [countries, setCountries] = useState([]);
 
+    //On appele la fonction qui donne 3 pays aléatoire
     const fetchCountry = async () => {
         try {
             const data = await countryAPI.getRandomCountry();
@@ -12,6 +13,7 @@ const HomePage = (props) => {
         }catch(error)
         {
             //Gerer les erreurs
+            console.error(error)
         }
     }
 

@@ -11,10 +11,10 @@ const DetailCountryPage = () => {
     try {
       const data = await countryAPI.getCountry(countryName);
       
-      // Filtrer les résultats pour ne conserver que celui dont le nom correspond exactement à countryName
+      // On recupere les pays qui correspondent au pays
       const filteredCountry = data.find(item => item.name.common === countryName);
       
-      // Si aucun résultat correspondant, rediriger vers la page principale
+      // Si il n'y a aucun resultat on redirige vers la page Home
       if (!filteredCountry) {
         throw new Error("Aucun résultat correspondant au nom du pays.");
       }

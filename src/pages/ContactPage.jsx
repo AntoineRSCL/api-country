@@ -4,6 +4,7 @@ import countryAPI from "../services/countryAPI";
 const ContactPage = (props) => {
     const [countries, setCountries] = useState([])
     const fetchCountry = async () => {
+        //Recupere les donnes et tire par ordre alphabetique
         try {
             const data = await countryAPI.getAllCountries();
             data.sort(function(a,b) {
@@ -20,7 +21,7 @@ const ContactPage = (props) => {
             setCountries(data)
         }catch(error)
         {
-            //Gerer les erreurs
+            console.error(error)
         }
     }
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//Fonction pour recuperer tous les pays de l'api et toutes leur données
 const getAllCountries = async () => {
     try {
         const response = await axios.get("https://restcountries.com/v3.1/all");
@@ -10,12 +11,9 @@ const getAllCountries = async () => {
     }
 };
 
+//Fonction pour récuperer les pays qui correspondent a celui qu'on appelle dans la fonction
 const getCountry = async(country) => {
     try{
-        if (country.length <= 3) {
-            throw new Error("Le nom du pays doit avoir plus de 3 caractères.");
-        }
-
         const response = await axios.get(`https://restcountries.com/v3.1/name/${country}`);
         return response.data;
     }catch(error) {
@@ -24,6 +22,7 @@ const getCountry = async(country) => {
     }
 }
 
+//Foncion pour récuperer 3 pays aléatoirement pour la page Home
 const getRandomCountry = async () => {
     try {
         const response = await axios.get("https://restcountries.com/v3.1/all");
