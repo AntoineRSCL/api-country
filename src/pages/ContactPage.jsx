@@ -3,6 +3,7 @@ import countryAPI from "../services/countryAPI";
 
 const ContactPage = (props) => {
     const [countries, setCountries] = useState([])
+
     const fetchCountry = async () => {
         //Recupere les donnes et tire par ordre alphabetique
         try {
